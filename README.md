@@ -1,6 +1,14 @@
 # Kayak
 
-*Authored by Ben Roudiak-Gould for the 2002 Essies*
+## Attributions
+
+- Kayak was developed by Ben Roudiak-Gould for the 2002 Essies
+- Ben wrote the interpreter (`kayak.cpp`), the brainfuck-to-kayak compiler (`bf2kayak.pl`), the documentation below, and the programs `hello.bf.kayak`, `reverse.kayak`, and `invert.kayak`
+- Bertram Felgenhauer wrote `sort3.kayak` (a merge sort discarding data to the bit-bucket)
+- The above constitute all the associated files on the [Esoteric Files Archive](https://github.com/graue/esofiles/tree/master/kayak) as of 2020-12-17
+- I (Will Earley) wrote `arith.kayak` (reversibilised unary/peano arithmetic, Fibonacci numbers, factorial, as well as routines to read and write space-separated numbers in base 10 (or any base 2-10) from stdin/stdout)
+
+## Disclaimer
 
 I am submitting Kayak to category #1 of the Essies. I hereby give the
 judges permission to distribute the archive for their own nefarious
