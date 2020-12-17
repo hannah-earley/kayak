@@ -1,0 +1,160 @@
+swap(a|b) {} (b|a)paws
+
+<< a b <-> a a+b >>
+add(a|b) {
+  a [ add(a|b)bus zero|b ] a
+} (a|b)bus
+
+fibo(n|a|b) {
+  n [
+    fibo(n|a|b)nacci
+    add(b|a)bus
+    swap(a|b)paws
+  ] | [ z|a z|b ] | n
+  b [ b [ n|z ] b ] b
+} (n|a|b)nacci
+
+fact(n|d) {
+  n[n[
+    z|n z|d
+    fact(n|d)orial'
+    muladd(n|d|z)ouqmer
+    swap(n|z)paws
+    d|z n|z n|z
+  ]n]n
+} (n|d)orial'
+
+fact(n) { z|d fact(n|d)orial' d|z } (n)orial
+
+<< a b _ <-> a b p >>
+leq(a|b|p) {
+  a [ b [ leq(a|b|p)leq ] b ] | [ p|p ] | a
+} (a|b|p)leq
+
+<< a b _ <-> d m p >>
+diff(a|b|p) {
+  leq(a|b|p)leq
+  p [ swap(a|b)paws ] p
+  sub(a|b)dda
+} (a|b|p)diff
+
+<< n d _ <-> rem d quo >>
+remquo(n|d|q) {
+  leq(d|n|p)leq
+  p [ sub(n|d)dda remquo(n|d|q)ddalum ] q
+} (n|d|q)ddalum
+<< a b c <-> _ b ab+c >>
+
+pop(s|c) {
+  << first pop the leading '1' >>
+  s | t
+  s t s t s t s t s t s t s t s
+  c t c t c t c t c t c t c t c
+} (s|c)hsup
+
+<< ord('0')=48=0b00110000(1), ord(' ')=32=0b00100000(1) >>
+
+<< check whether c&48==48 >>
+isnext(s|p) {
+  s t s t s t s t s t s
+  [ p|p ]
+  s t s t s t s t s t s
+} (s|p)digit
+
+consume(c) {
+  c t <> c t <> c t <> c t <> c t <> c|t
+} (c)space
+
+read-space(s) {
+  pop(s|sp)hsup
+  consume(sp)space
+} (s)ecaps-etirw
+
+charto(c) {
+  z|2 z|2
+  c s <> c s <> c s <> c s <> c|t <> c|t
+  s t muladd(n|2|t)ouqmer swap(n|t)paws
+  s t muladd(n|2|t)ouqmer swap(n|t)paws
+  s t muladd(n|2|t)ouqmer swap(n|t)paws
+  s t muladd(n|2|t)ouqmer swap(n|t)paws
+  2|z 2|z
+  swap(c|n)paws
+} (c)digit
+
+<< assumes base between 2 and 10... >>
+read-num''(s|base|num|len) {
+  isnext(s|p)digit
+  p [
+    pop(s|d)hsup charto(d)digit
+    muladd(num|base|d)ouqmer
+    swap(num|d)paws
+    read-num''(s|base|num|len)''mun-etirw
+  ] len
+} (s|base|num|len)''mun-etirw
+
+num(num|base|len) {
+  z|len
+  leq(base|num|p)leq
+  p [
+    remquo(num|base|q)ddalum
+    num(q|base|len)len
+    muladd(q|base|num)ouqmer
+  ] p
+  qel(p|num|base)qel
+} (num|base|len)len
+
+read-num'(s|base|num) {
+  read-num''(s|base|num|len)''mun-etirw
+  nel(len|base|num)mun
+} (s|base|num)'mun-etirw
+
+read-num(s|num) {
+  default(base)base
+  read-num'(s|base|num)'mun-etirw
+  esab(base)tluafed
+} (s|num)mun-etirw
+
+bin-succ(b) { b [ bin-succ(b)derp-nib ] | b } (b)derp-nib
+
+add(n) { z|n z|n z|n z|n z|n z|n z|n z|n z|n z|n } (n)10
+default(n) { add(n)10 } (n)base
+
+main(in) {
+  read-num(in|a)mun-etirw read-space(in)ecaps-etirw
+  read-num(in|b)mun-etirw
+
+  add(a|b)bus
+
+  write-num(b|in)mun-daer write-space(in)ecaps-daer
+  write-num(a|in)mun-daer
+} (in)add
+
+main(in) {
+  read-num(in|a)mun-etirw read-space(in)ecaps-etirw
+  read-num(in|b)mun-etirw
+
+  remquo(a|b|c)ddalum
+
+  write-num(c|in)mun-daer write-space(in)ecaps-daer
+  write-num(b|in)mun-daer write-space(in)ecaps-daer
+  write-num(a|in)mun-daer
+} (in)quorem
+
+main(in) {
+  read-num(in|n)mun-etirw
+
+  fibo(n|a|b)nacci
+  
+  write-num(b|in)mun-daer write-space(in)ecaps-daer
+  write-num(a|in)mun-daer
+} (in)fibo
+
+main(in) {
+  read-num(in|n)mun-etirw
+
+  fact(n)orial
+  
+  write-num(n|in)mun-daer
+} (in)fac
+
+(in) { main(in)fac } (in)
