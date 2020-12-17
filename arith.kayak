@@ -54,11 +54,11 @@ pop(s|c) {
 
 << ord('0')=48=0b00110000(1), ord(' ')=32=0b00100000(1) >>
 
-<< check whether c&48==48 >>
+<< check whether c&224==48 >>
 isnext(s|p) {
-  s t s t s t s t s t s
-  [ p|p ]
-  s t s t s t s t s t s
+  s[ s t s t s t s t
+     s[s[s|[s|[ p|p ]|s]|s]s]s
+     t s t s t s t s ]s
 } (s|p)digit
 
 consume(c) {
